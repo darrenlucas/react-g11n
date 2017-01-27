@@ -24,3 +24,26 @@ test('Localizer', () => {
   );
 
 });
+
+test('Localizer with localeDir', () => {
+
+  class DummyComponent extends Component {
+    render() {
+      expect(this.context.locale).toBe('fr');
+      expect(this.context.translator.translate('hello')).toBe('bonjour');
+      return null
+    }
+  }
+
+  DummyComponent.contextTypes = {
+    locale: PropTypes.string,
+    translator: PropTypes.object
+  };
+
+  renderer.create(
+    <Localizer locale='fr' localeDir='./test/fixtures/locale'>
+      <DummyComponent />
+    </Localizer>
+  );
+
+});
