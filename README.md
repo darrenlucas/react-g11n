@@ -23,7 +23,7 @@ object to child components.  Wrap your component in a Localizer as follows:
     import App from "app"
 
     render(
-        <Localizer locale="cy">
+        <Localizer locale="cy" localeDir="./locale">
             <App />
         </Localizer>
     }

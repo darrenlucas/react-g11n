@@ -4,10 +4,10 @@ import translatorFactory from './translator-factory';
 class Localizer extends Component {
 
   getChildContext() {
-    const { locale } = this.props;
+    const { locale, localeDir } = this.props;
     return {
       locale: locale,
-      translator: translatorFactory(locale)
+      translator: translatorFactory(locale, { localeDir: localeDir })
     };
   }
 
@@ -20,6 +20,11 @@ class Localizer extends Component {
 Localizer.propTypes = {
   children: PropTypes.node,
   locale: PropTypes.string.isRequired,
+  localeDir: PropTypes.string
+};
+
+Localizer.defaultProps = {
+  localeDir: 'locale'
 };
 
 Localizer.childContextTypes = {
